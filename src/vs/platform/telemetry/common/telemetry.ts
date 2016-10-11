@@ -21,6 +21,7 @@ export interface ITelemetryExperiments {
 	showDefaultViewlet: boolean;
 	showCommandsWatermark: boolean;
 	openUntitledFile: boolean;
+	showCommandTip: boolean;
 }
 
 export interface ITelemetryService {
@@ -43,7 +44,8 @@ export interface ITelemetryService {
 export const defaultExperiments: ITelemetryExperiments = {
 	showDefaultViewlet: false,
 	showCommandsWatermark: false,
-	openUntitledFile: true
+	openUntitledFile: true,
+	showCommandTip: false
 };
 
 export const NullTelemetryService = {
@@ -64,6 +66,8 @@ export const NullTelemetryService = {
 		return this._experiments;
 	}
 };
+
+const showCommandTip = false; // TODO: Randomize
 
 export function loadExperiments(storageService: IStorageService, configurationService: IConfigurationService): ITelemetryExperiments {
 
@@ -90,7 +94,8 @@ export function loadExperiments(storageService: IStorageService, configurationSe
 	return applyOverrides(configurationService, {
 		showDefaultViewlet,
 		showCommandsWatermark,
-		openUntitledFile
+		openUntitledFile,
+		showCommandTip
 	});
 }
 
