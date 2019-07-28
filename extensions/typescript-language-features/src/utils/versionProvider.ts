@@ -137,7 +137,7 @@ export class TypeScriptVersionProvider {
 	}
 
 	public get bundledVersion(): TypeScriptVersion {
-		const version = this.getContributedVersion('vscode.typescript-language-features', ['..', 'node_modules']);
+		const version = this.getContributedVersion('vscode.typescript-language-features', ['node_modules']);
 		if (version) {
 			return version;
 		}
